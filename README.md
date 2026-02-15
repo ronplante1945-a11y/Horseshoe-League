@@ -1,2 +1,2 @@
 # Horseshoe-League
-League Ino and Standings
+League Info and Standings
