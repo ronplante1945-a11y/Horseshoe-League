@@ -1,211 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bush Hall Horseshoe League</title>
-    <style>
-        :root {
-            --primary-blue: #0056b3;
-            --dark-grey: #333;
-            --light-bg: #f4f4f9;
-            --accent-blue: #e7f1ff;
-        }
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Bush Hall Horseshoe League</title> 
+    
+    <!-- 1. FORCE THE PAGE TO REFRESH EVERY 5 MINUTES (300 SECONDS) -->
+    <meta http-equiv="refresh" content="300">
+    
+    <!-- 2. PREVENT BROWSERS FROM CACHING THIS PAGE LAYOUT -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-bg);
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--dark-grey);
-            min-height: 100vh;
-        }
-
-        header {
-            text-align: center;
-            padding: 2.5rem 1rem;
-        }
-
-        .hero-image {
-            width: 90%;
-            max-width: 700px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            margin-bottom: 2.5rem;
-            object-fit: cover;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            width: 90%;
-            max-width: 1100px;
-            flex-grow: 1;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary-blue);
-        }
-
-        .button-group {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 12px;
-            background-color: var(--primary-blue);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .btn-outline {
-            flex: 1;
-            padding: 12px;
-            background-color: transparent;
-            color: var(--primary-blue);
-            text-decoration: none;
-            border: 2px solid var(--primary-blue);
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .btn:hover { background-color: #004494; }
-        .btn-outline:hover { background-color: var(--accent-blue); }
-
-        footer {
-            width: 100%;
-            background-color: #fff;
-            padding: 2.5rem 0;
-            margin-top: 4rem;
-            text-align: center;
-            border-top: 1px solid #ddd;
-        }
-
-        .contact-link {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        #last-updated {
-            font-style: italic;
-            color: #777;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Bush Hall Horseshoe League</h1>
-        <p>Your central hub for stats, standings, and schedules.</p>
-        <div id="last-updated"></div>
-    </header>
-
-
-    <img src="league-photo.jpg" alt="League Photo">
-
-    <div class="container">
-
-        <div class="card">
-            <div>
-                <h3>Weekly Schedule</h3>
-                <p>Upcoming Match Dates</p>
-            </div>
-            <div class="button-group">
-                <a href="WeeklySchedule.pdf" target="_blank" class="btn">View</a>
-                <a href="WeeklySchedule.pdf" download="Weekly_Schedule.pdf" class="btn-outline">Download</a>
-            </div>
-         </div>
-        
-        <div class="card">
-            <div>
-                <h3>League Standings</h3>
-                <p>Win/Loss Record</p>
-            </div>
-            <div class="button-group">
-                <a href="LeagueStandings.pdf" target="_blank" class="btn">View</a>
-                <a href="LeagueStandings.pdf" download="League_standings.pdf" class="btn-outline">Download</a>
-            </div>
+    <style> 
+        :root { 
+            --primary-blue: #0056b3; 
+            --dark-grey: #333; 
+            --light-bg: #f4f4f9; 
+            --accent-blue: #e7f1ff; 
+        } 
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--light-bg); 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            color: var(--dark-grey); 
+            min-height: 100vh; 
+        } 
+        header { 
+            text-align: center; 
+            padding: 2.5rem 1rem; 
+        } 
+        .hero-image { 
+            width: 90%; 
+            max-width: 700px; 
+            height: auto; 
+            border-radius: 15px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+            margin-bottom: 2.5rem; 
+            object-fit: cover; 
+        } 
+        .container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            width: 90%; 
+            max-width: 1100px; 
+            flex-grow: 1; 
+        } 
+        .card { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 12px; 
+            text-align: center; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        } 
+        .card:hover { 
+            transform: translateY(-8px); 
+        } 
+        .card h3 { 
+            margin-top: 0; 
+            color: var(--primary-blue); 
+        } 
+        .button-group { 
+            display: flex; 
+            gap: 12px; 
+            justify-content: center; 
+            margin-top: 1.5rem; 
+        } 
+        .btn { 
+            flex: 1; 
+            padding: 12px; 
+            background-color: var(--primary-blue); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            font-size: 0.9rem; 
+            text-align: center; 
+        } 
+        .btn-outline { 
+            flex: 1; 
+            padding: 12px; 
+            background-color: transparent; 
+            color: var(--primary-blue); 
+            text-decoration: none; 
+            border: 2px solid var(--primary-blue); 
+            border-radius: 6px; 
+            font-weight: bold; 
+            font-size: 0.9rem; 
+            text-align: center; 
+        } 
+        .btn:hover { 
+            background-color: #004494; 
+        } 
+        .btn-outline:hover { 
+            background-color: var(--accent-blue); 
+        } 
+        footer { 
+            width: 100%; 
+            background-color: #fff; 
+            padding: 2.5rem 0; 
+            margin-top: 4rem; 
+            text-align: center; 
+            border-top: 1px solid #ddd; 
+        } 
+        .contact-link { 
+            color: var(--primary-blue); 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+        } 
+        #last-updated { 
+            font-style: italic; 
+            color: #777; 
+            font-size: 0.9rem; 
+            margin-top: 0.5rem; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <header> 
+        <h1>Bush Hall Horseshoe League</h1> 
+        <p>Your central hub for stats, standings, and schedules.</p> 
+        <div id="last-updated"></div> 
+    </header> 
+    <img src="league-photo.jpg" alt="League Photo" class="hero-image"> 
+    <div class="container"> 
+        <div class="card"> 
+            <div> 
+                <h3>Weekly Schedule</h3> 
+                <p>Upcoming Match Dates</p> 
+            </div> 
+            <div class="button-group"> 
+                <a href="WeeklySchedule.pdf" target="_blank" class="btn">View</a> 
+                <a href="WeeklySchedule.pdf" download="Weekly_Schedule.pdf" class="btn-outline">Download</a> 
+            </div> 
         </div> 
-        
-        <div class="card">
-            <div>
-                <h3>Player Statistics</h3>
-                <p>Averages,Handicap & Ringer Percentages</p>
-            </div>
-            <div class="button-group">
-                <a href="PlayerStatistics.pdf" target="_blank" class="btn">View</a>
-                <a href="PlayerStatistics.pdf" download="Player_Stats.pdf" class="btn-outline">Download</a>
-            </div>
-        </div>
+        <div class="card"> 
+            <div> 
+                <h3>League Standings</h3> 
+                <p>Win/Loss Record</p> 
+            </div> 
+            <div class="button-group"> 
+                <a href="LeagueStandings.pdf" target="_blank" class="btn">View</a> 
+                <a href="LeagueStandings.pdf" download="League_standings.pdf" class="btn-outline">Download</a> 
+            </div> 
+        </div> 
+        <div class="card"> 
+            <div> 
+                <h3>Player Statistics</h3> 
+                <p>Averages,Handicap & Ringer Percentages</p> 
+            </div> 
+            <div class="button-group"> 
+                <a href="PlayerStatistics.pdf" target="_blank" class="btn">View</a> 
+                <a href="PlayerStatistics.pdf" download="Player_Stats.pdf" class="btn-outline">Download</a> 
+            </div> 
+        </div> 
+        <div class="card"> 
+            <div> 
+                <h3>Score Sheets</h3> 
+                <h4>Make sure the date is correct</h4> 
+                <p>View next match score sheet</p> 
+            </div> 
+            <div class="button-group"> 
+                <a href="ScoreSheets.pdf" target="_blank" class="btn">View</a> 
+                <a href="ScoreSheets.pdf" download="Score_Sheets.pdf" class="btn-outline">Download</a> 
+            </div> 
+        </div> 
+    </div> 
+    <footer> 
+        <p>Notice a scoring error or have a question?</p> 
+        <a href="mailto:ron.plante1945@gmail.com?subject=Horseshoe League Inquiry" class="contact-link"> 📧 Contact League Administrator </a> 
+        <p style="font-size: 0.8rem; color: #aaa; margin-top: 1.5rem;"> &copy; 2026 Horseshoe League Portal </p> 
+    </footer> 
+    
+    <script> 
+        // Display the document last modified date
+        const date = new Date(document.lastModified); 
+        const options = { year: 'numeric', month: 'long', day: 'numeric' }; 
+        document.getElementById('last-updated').innerHTML = "Stats last updated: " + date.toLocaleDateString('en-US', options); 
 
-        <div class="card">
-            <div>
-                <h3>Score Sheets</h3>
-                <h4>Make sure the date is correct</h4>
-                <p>View next match score sheet</p>
-            </div>
-            <div class="button-group">
-                <a href="ScoreSheets.pdf" target="_blank" class="btn">View</a>
-                <a href="ScoreSheets.pdf" download="Score_Sheets.pdf" class="btn-outline">Download</a>
-            </div>
-        </div>
-
-        
-    </div>
-
-
-    <footer>
-        <p>Notice a scoring error or have a question?</p>
-        <a href="mailto:ron.plante1945@gmail.com?subject=Horseshoe League Inquiry" class="contact-link">
-            📧 Contact League Administrator
-        </a>
-        
-        <p style="font-size: 0.8rem; color: #aaa; margin-top: 1.5rem;">
-            &copy; 2026 Horseshoe League Portal
-        </p>
-    </footer>
-
-    <script>
-        const date = new Date(document.lastModified);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('last-updated').innerHTML = 
-            "Stats last updated: " + date.toLocaleDateString('en-US', options);
-    </script>
-
-</body>
+        // 3. AUTOMATICALLY BYPASS CACHE FOR ALL PDF LINKS
+        // Generates a unique timestamp parameter on page load
+        const cacheBuster = "?t=" + new Date().getTime();
+        const links = document.querySelectorAll('a[href$=".pdf"]');
+        links.forEach(link => {
+            const currentHref = link.getAttribute('href');
+            link.setAttribute('href', currentHref + cacheBuster);
+        });
+    </script> 
+</body> 
 </html>
