@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Bush Hall Horseshoe League</title> 
     
-    <!-- 1. FORCE THE PAGE TO REFRESH EVERY 5 MINUTES (300 SECONDS) -->
     <meta http-equiv="refresh" content="300">
     
-    <!-- 2. PREVENT BROWSERS FROM CACHING THIS PAGE LAYOUT -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -124,15 +122,10 @@
             font-size: 0.9rem; 
             margin-top: 0.5rem; 
         } 
-        /* Visitor Counter Styling */
         .visitor-counter {
             margin-top: 1.5rem;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #666;
-        }
-        .visitor-counter img {
-            vertical-align: middle;
-            margin-left: 5px;
         }
     </style> 
 </head> 
@@ -142,7 +135,9 @@
         <p>Your central hub for stats, standings, and schedules.</p> 
         <div id="last-updated"></div> 
     </header> 
-    <img src="league-photo.jpg" alt="League Photo"> 
+    
+    <img src="league-photo.jpg" alt="League Photo" class="hero-image"> 
+    
     <div class="container"> 
         <div class="card"> 
             <div> 
@@ -167,7 +162,7 @@
         <div class="card"> 
             <div> 
                 <h3>Player Statistics</h3> 
-                <p>Averages,Handicap & Ringer Percentages</p> 
+                <p>Averages, Handicap & Ringer Percentages</p> 
             </div> 
             <div class="button-group"> 
                 <a href="PlayerStatistics.pdf" target="_blank" class="btn">View</a> 
@@ -186,42 +181,49 @@
             </div> 
         </div> 
     </div> 
+    
     <footer> 
         <p>Notice a scoring error or have a question?</p> 
         <a href="mailto:ron.plante1945@gmail.com?subject=Horseshoe League Inquiry" class="contact-link"> 📧 Contact League Administrator </a> 
         
-        <!-- VISITOR COUNTER -->
         <div class="visitor-counter">
-             <span>Site Visits: </span><span id="count">...</span>
+            Site Visits: <span id="stats-count">...</span>
         </div>
 
-        <p style="font-size: 0.8rem; color: #aaa; margin-top: 1rem;"> &copy; 2026 Horseshoe League Portal </p> 
+        <p style="font-size: 0.8rem; color: #aaa; margin-top: 1.5rem;"> &copy; 2026 Horseshoe League Portal </p> 
     </footer> 
     
     <script> 
-       // 1. Display the document last modified date
-const date = new Date(document.lastModified); 
-const options = { year: 'numeric', month: 'long', day: 'numeric' }; 
-document.getElementById('last-updated').innerHTML = "Stats last updated: " + date.toLocaleDateString('en-US', options); 
+        // 1. Display the document last modified date
+        const date = new Date(document.lastModified); 
+        const options = { year: 'numeric', month: 'long', day: 'numeric' }; 
+        document.getElementById('last-updated').innerHTML = "Stats last updated: " + date.toLocaleDateString('en-US', options); 
 
-// 2. AUTOMATICALLY BYPASS CACHE FOR ALL PDF LINKS
-const cacheBuster = "?t=" + new Date().getTime();
-const links = document.querySelectorAll('a[href$=".pdf"]');
-links.forEach(link => {
-    const currentHref = link.getAttribute('href');
-    link.setAttribute('href', currentHref + cacheBuster);
-});
+        // 2. AUTOMATICALLY BYPASS CACHE FOR ALL PDF LINKS
+        const cacheBuster = "?t=" + new Date().getTime();
+        const links = document.querySelectorAll('a[href$=".pdf"]');
+        links.forEach(link => {
+            const currentHref = link.getAttribute('href');
+            link.setAttribute('href', currentHref + cacheBuster);
+        });
 
-// 3. TEXT-BASED VISITOR COUNTER
-// Using CountAPI - This is a free, simple counter for static sites
-function cb(response) {
-    document.getElementById('count').innerText = response.value;
-}
-
-// This script calls a public API to increment your specific league counter
-const script = document.createElement('script');
-script.src = 'https://api.countapi.xyz/hit/bush-hall-league/visits?callback=cb';
-document.body.appendChild(script);
+        // 3. TEXT-BASED VISITOR COUNTER (GoatCounter)
+        var r = new XMLHttpRequest();
+        r.addEventListener('load', function() {
+            try {
+                var data = JSON.parse(this.responseText);
+                // Updates the 'stats-count' span with the number from the server
+                document.getElementById('stats-count').innerText = data.count || '1';
+            } catch (e) {
+                document.getElementById('stats-count').innerText = 'Viewed';
+            }
+        });
+        // This hits the GoatCounter API for your specific URL
+        r.open('GET', 'https://bush-hall.goatcounter.com/counter/index.json');
+        r.send();
     </script> 
+    
+    <script data-goatcounter="https://bush-hall.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 </body> 
 </html>
