@@ -32,6 +32,7 @@
             text-align: center; 
             padding: 2.5rem 1rem; 
         } 
+        /* The Hero Image styling you wanted kept */
         .hero-image { 
             width: 90%; 
             max-width: 700px; 
@@ -124,8 +125,9 @@
         } 
         .visitor-counter {
             margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: #666;
+        }
+        .visitor-counter img {
+            height: 25px; /* Keeps the badge small and clean */
         }
     </style> 
 </head> 
@@ -136,7 +138,7 @@
         <div id="last-updated"></div> 
     </header> 
     
-    <img src="league-photo.jpg" alt="League Photo"> 
+    <img src="league-photo.jpg" alt="League Photo" class="hero-image"> 
     
     <div class="container"> 
         <div class="card"> 
@@ -187,10 +189,10 @@
         <a href="mailto:ron.plante1945@gmail.com?subject=Horseshoe League Inquiry" class="contact-link"> 📧 Contact League Administrator </a> 
         
         <div class="visitor-counter">
-            Site Visits: <span id="stats-count">...</span>
+            <img src="https://visitor-badge.laobi.icu/badge?page_id=bush-hall-horseshoes-2026&left_color=grey&right_color=blue&left_text=Site%20Visits" alt="Visitor Count">
         </div>
 
-        <p style="font-size: 0.8rem; color: #aaa; margin-top: 1.5rem;"> &copy; 2026 Horseshoe League Portal </p> 
+        <p style="font-size: 0.8rem; color: #aaa; margin-top: 1rem;"> &copy; 2026 Horseshoe League Portal </p> 
     </footer> 
     
     <script> 
@@ -206,24 +208,6 @@
             const currentHref = link.getAttribute('href');
             link.setAttribute('href', currentHref + cacheBuster);
         });
-
-        // 3. TEXT-BASED VISITOR COUNTER (GoatCounter)
-        var r = new XMLHttpRequest();
-        r.addEventListener('load', function() {
-            try {
-                var data = JSON.parse(this.responseText);
-                // Updates the 'stats-count' span with the number from the server
-                document.getElementById('stats-count').innerText = data.count || '1';
-            } catch (e) {
-                document.getElementById('stats-count').innerText = 'Viewed';
-            }
-        });
-        // This hits the GoatCounter API for your specific URL
-        r.open('GET', 'https://bush-hall.goatcounter.com/counter/index.json');
-        r.send();
     </script> 
-    
-    <script data-goatcounter="https://bush-hall.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
 </body> 
 </html>
