@@ -192,27 +192,36 @@
         
         <!-- VISITOR COUNTER -->
         <div class="visitor-counter">
-            <span>Page View:</span>
-            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbushhallhorseshoe&count_bg=%230056B3&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" alt="Visitor Counter">
+             <span>Site Visits: </span><span id="count">...</span>
         </div>
 
         <p style="font-size: 0.8rem; color: #aaa; margin-top: 1rem;"> &copy; 2026 Horseshoe League Portal </p> 
     </footer> 
     
     <script> 
-        // Display the document last modified date
-        const date = new Date(document.lastModified); 
-        const options = { year: 'numeric', month: 'long', day: 'numeric' }; 
-        document.getElementById('last-updated').innerHTML = "Stats last updated: " + date.toLocaleDateString('en-US', options); 
+       // 1. Display the document last modified date
+const date = new Date(document.lastModified); 
+const options = { year: 'numeric', month: 'long', day: 'numeric' }; 
+document.getElementById('last-updated').innerHTML = "Stats last updated: " + date.toLocaleDateString('en-US', options); 
 
-        // 3. AUTOMATICALLY BYPASS CACHE FOR ALL PDF LINKS
-        // Generates a unique timestamp parameter on page load
-        const cacheBuster = "?t=" + new Date().getTime();
-        const links = document.querySelectorAll('a[href$=".pdf"]');
-        links.forEach(link => {
-            const currentHref = link.getAttribute('href');
-            link.setAttribute('href', currentHref + cacheBuster);
-        });
+// 2. AUTOMATICALLY BYPASS CACHE FOR ALL PDF LINKS
+const cacheBuster = "?t=" + new Date().getTime();
+const links = document.querySelectorAll('a[href$=".pdf"]');
+links.forEach(link => {
+    const currentHref = link.getAttribute('href');
+    link.setAttribute('href', currentHref + cacheBuster);
+});
+
+// 3. TEXT-BASED VISITOR COUNTER
+// Using CountAPI - This is a free, simple counter for static sites
+function cb(response) {
+    document.getElementById('count').innerText = response.value;
+}
+
+// This script calls a public API to increment your specific league counter
+const script = document.createElement('script');
+script.src = 'https://api.countapi.xyz/hit/bush-hall-league/visits?callback=cb';
+document.body.appendChild(script);
     </script> 
 </body> 
 </html>
